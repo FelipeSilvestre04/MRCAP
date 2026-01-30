@@ -1,0 +1,21 @@
+--- Resultados para EB-9 ---
+  Média: 68.72%
+  Mínimo: 67.10%
+  Máximo: 70.39%
+  Número de Runs: 14
+
+  Valores Individuais:
+    Run 1: 69.43%
+    Run 2: 69.12%
+    Run 3: 67.88%
+    Run 4: 68.90%
+    Run 5: 68.56%
+    Run 6: 68.04%
+    Run 7: 67.29%
+    Run 8: 67.99%
+    Run 9: 70.39%
+    Run 10: 68.26%
+    Run 11: 70.19%
+    Run 12: 67.10%
+    Run 13: 69.67%
+    Run 14: 69.23%

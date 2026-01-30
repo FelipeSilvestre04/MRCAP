@@ -1,0 +1,10 @@
+--- Resultados para EB-6 ---
+  Média: 73.46%
+  Mínimo: 73.39%
+  Máximo: 73.50%
+  Número de Runs: 3
+
+  Valores Individuais:
+    Run 1: 73.39%
+    Run 2: 73.50%
+    Run 3: 73.48%

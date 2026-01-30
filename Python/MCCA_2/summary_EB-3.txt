@@ -1,0 +1,8 @@
+--- Resultados para EB-3 ---
+  Média: 46.77%
+  Mínimo: 46.77%
+  Máximo: 46.77%
+  Número de Runs: 1
+
+  Valores Individuais:
+    Run 1: 46.77%

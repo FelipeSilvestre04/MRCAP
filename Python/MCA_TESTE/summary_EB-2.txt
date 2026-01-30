@@ -1,0 +1,17 @@
+--- Resultados para EB-2 ---
+  Média: 46.54%
+  Mínimo: 41.80%
+  Máximo: 51.93%
+  Número de Runs: 10
+
+  Valores Individuais:
+    Run 1: 47.19%
+    Run 2: 45.78%
+    Run 3: 43.49%
+    Run 4: 48.04%
+    Run 5: 47.38%
+    Run 6: 46.34%
+    Run 7: 44.67%
+    Run 8: 41.80%
+    Run 9: 48.73%
+    Run 10: 51.93%

@@ -1,0 +1,19 @@
+--- Resultados para EB-10 ---
+  Média: 64.76%
+  Mínimo: 63.67%
+  Máximo: 66.35%
+  Número de Runs: 12
+
+  Valores Individuais:
+    Run 1: 63.92%
+    Run 2: 65.76%
+    Run 3: 63.99%
+    Run 4: 65.56%
+    Run 5: 66.35%
+    Run 6: 63.98%
+    Run 7: 63.67%
+    Run 8: 64.66%
+    Run 9: 64.04%
+    Run 10: 65.13%
+    Run 11: 63.85%
+    Run 12: 66.22%

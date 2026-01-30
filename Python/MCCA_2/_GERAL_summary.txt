@@ -1,0 +1,22 @@
+--- MÉDIAS POR INSTÂNCIA ---
+  Média EB-1: 48.78%
+  Média EB-10: 64.84%
+  Média EB-11: 67.98%
+  Média EB-12: 63.86%
+  Média EB-13: 60.40%
+  Média EB-14: 66.24%
+  Média EB-2: 47.19%
+  Média EB-3: 46.77%
+  Média EB-4: 60.24%
+  Média EB-5: 43.36%
+  Média EB-6: 73.46%
+  Média EB-7: 40.59%
+  Média EB-8: 66.91%
+  Média EB-9: 68.89%
+
+
+--- SUMÁRIO GERAL (TODOS OS RUNS) ---
+  Total de Runs Processados: 26
+  Média Geral: 61.61%
+  Mínimo Geral: 38.91%
+  Máximo Geral: 73.50%

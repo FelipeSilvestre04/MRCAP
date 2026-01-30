@@ -1,0 +1,20 @@
+--- Resultados para EB-12 ---
+  Média: 63.91%
+  Mínimo: 61.63%
+  Máximo: 66.11%
+  Número de Runs: 13
+
+  Valores Individuais:
+    Run 1: 64.18%
+    Run 2: 64.11%
+    Run 3: 64.83%
+    Run 4: 63.19%
+    Run 5: 62.12%
+    Run 6: 63.44%
+    Run 7: 62.74%
+    Run 8: 65.44%
+    Run 9: 64.67%
+    Run 10: 63.27%
+    Run 11: 61.63%
+    Run 12: 66.11%
+    Run 13: 65.05%

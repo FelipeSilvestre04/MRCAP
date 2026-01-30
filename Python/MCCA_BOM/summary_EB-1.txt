@@ -1,0 +1,19 @@
+--- Resultados para EB-1 ---
+  Média: 45.81%
+  Mínimo: 33.12%
+  Máximo: 50.05%
+  Número de Runs: 12
+
+  Valores Individuais:
+    Run 1: 45.56%
+    Run 2: 44.28%
+    Run 3: 50.05%
+    Run 4: 46.33%
+    Run 5: 47.25%
+    Run 6: 33.12%
+    Run 7: 46.68%
+    Run 8: 45.67%
+    Run 9: 47.01%
+    Run 10: 47.67%
+    Run 11: 48.45%
+    Run 12: 47.62%
