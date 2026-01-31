@@ -1,9 +1,0 @@
---- Resultados para EB-11 ---
-  Média: 67.98%
-  Mínimo: 67.60%
-  Máximo: 68.36%
-  Número de Runs: 2
-
-  Valores Individuais:
-    Run 1: 68.36%
-    Run 2: 67.60%

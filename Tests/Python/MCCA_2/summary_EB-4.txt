@@ -1,8 +1,0 @@
---- Resultados para EB-4 ---
-  Média: 60.24%
-  Mínimo: 60.24%
-  Máximo: 60.24%
-  Número de Runs: 1
-
-  Valores Individuais:
-    Run 1: 60.24%

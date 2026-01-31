@@ -1,8 +1,0 @@
---- Resultados para EB-5 ---
-  Média: 43.36%
-  Mínimo: 43.36%
-  Máximo: 43.36%
-  Número de Runs: 1
-
-  Valores Individuais:
-    Run 1: 43.36%

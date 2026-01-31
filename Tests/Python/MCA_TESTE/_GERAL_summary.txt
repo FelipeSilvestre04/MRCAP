@@ -1,6 +1,0 @@
---- SUMÁRIO GERAL (TODAS AS INSTÂNCIAS) ---
-
-  Total de Runs Processados: 162
-  Média Geral: 59.28%
-  Mínimo Geral: 33.12%
-  Máximo Geral: 75.32%

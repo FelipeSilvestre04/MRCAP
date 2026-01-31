@@ -1,9 +1,0 @@
---- Resultados para EB-14 ---
-  Média: 66.24%
-  Mínimo: 65.32%
-  Máximo: 67.17%
-  Número de Runs: 2
-
-  Valores Individuais:
-    Run 1: 67.17%
-    Run 2: 65.32%

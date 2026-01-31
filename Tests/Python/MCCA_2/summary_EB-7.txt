@@ -1,9 +1,0 @@
---- Resultados para EB-7 ---
-  Média: 40.59%
-  Mínimo: 38.91%
-  Máximo: 42.28%
-  Número de Runs: 2
-
-  Valores Individuais:
-    Run 1: 38.91%
-    Run 2: 42.28%
