@@ -8,34 +8,37 @@ from PIL import Image, ImageDraw
 import matplotlib.pyplot as plt
 import turtle
 import math
+
+# Get the directory of this script for relative imports
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_UTILS_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', '..', 'utils'))
+_INSTANCES_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', 'instances'))
+_OUTPUT_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', 'output'))
+_NFP_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, 'NFPs'))
+sys.path.insert(0, _UTILS_DIR)
+
 from botao import Botao
-from nfp_teste import combinar_poligonos, triangulate_shapely,NoFitPolygon, interpolar_pontos_poligono
+from nfp_teste import combinar_poligonos, triangulate_shapely, NoFitPolygon, interpolar_pontos_poligono
+from RKO_v3 import RKO
+
 from shapely import intersection_all
 import shapely
 from shapely import Polygon, MultiPolygon, unary_union, LineString, MultiLineString, MultiPoint, LinearRing, GeometryCollection, Point
 from shapely.prepared import prep
 import itertools
 from scipy.spatial import ConvexHull
-import numpy as np
 import cv2
 import copy
 import pyautogui
-import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon as MPolygon, Rectangle
 import random
-import math
 from typing import List, Tuple, Union
-import sys
 from shapely import affinity
-import matplotlib.pyplot as plt
 from shapely.geometry import Polygon, MultiPolygon, Point, LineString
 from shapely.ops import unary_union
 from shapely.affinity import translate
 import cProfile
 import pstats
-sys.path.append(os.path.abspath("C:\\Users\\felip\\Documents\\GitHub\\RKO\\Python"))
-
-from RKO_v3 import RKO
 
 
 def tratar_lista(lista_poligonos, Escala):
@@ -178,7 +181,8 @@ def multiplicar_tudo(d, multiplicador):
     return novo_dicionario
 
 def ler_poligonos(arquivo, escala=1):
-    with open( 'C:\\Users\\felip\\Documents\\GitHub\\RKO\\Python\\Problems\\2DISPP\\' + arquivo + '.dat', 'r') as f:
+    instance_path = os.path.join(_INSTANCES_DIR, arquivo + '.dat')
+    with open(instance_path, 'r') as f:
         conteudo = f.read().strip()
 
     # Divide o conteúdo em linhas
@@ -978,7 +982,7 @@ class Knapsack2D():
             pairwise_mode = pairwise_IN and (porcentagem > 0)
             
             if pairwise_mode:
-                nfp_file = f"C:\\Users\\felip\\Documents\\GitHub\\RKO\\nfp_{self.dataset}_novo2.txt"
+                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}_novo2.txt")
                 
                 if os.path.exists(nfp_file):
                     with open(nfp_file, "r") as f:
@@ -1003,7 +1007,7 @@ class Knapsack2D():
                     with open(nfp_file, "w") as f:
                         f.write(repr(self.tabela_nfps))
             else:
-                nfp_file = f"C:\\Users\\felip\\Documents\\GitHub\\RKO\\nfp_{self.dataset}_novo2.txt"
+                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}_novo2.txt")
                 
                 if os.path.exists(nfp_file):
                     with open(nfp_file, "r") as f:
@@ -1314,7 +1318,7 @@ class Knapsack2D():
         
 
         # print(f"\n--- Salvando as imagens dos Top {len(pares_finais)} Melhores Encaixes ---")
-        save_path = f"C:\\Users\\felip\\OneDrive\\Documentos\\GitHub\\RKO\\Python\\pairwise_results_20\\{self.dataset}"
+        save_path = os.path.join(_OUTPUT_DIR, f"pairwise_results_{self.dataset}")
         for rank, aval in enumerate(pares_finais_para_plotar):
             self.reset()
             poly1 = Polygon(self.rot_pol(aval['i'], aval['grau1']))
@@ -2256,7 +2260,8 @@ class Knapsack2D():
         
             
     def plot(self, legenda):
-        draw_cutting_area(self.pecas_posicionadas, self.base, self.altura ,legenda=legenda, filename=f'C:\\Users\\felip\\Documents\\GitHub\\RKO\\Python\\Images\\KP_new\\{self.instance_name}\\{self.instance_name}_{time.time()}.png')
+        output_path = os.path.join(_OUTPUT_DIR, f'{self.instance_name}_{time.time()}.png')
+        draw_cutting_area(self.pecas_posicionadas, self.base, self.altura, legenda=legenda, filename=output_path)
     
     def get_used_width(self):
         original_counter = Counter(tuple(map(tuple, pol)) for pol in self.lista_original)

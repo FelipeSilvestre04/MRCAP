@@ -8,38 +8,38 @@ from PIL import Image, ImageDraw
 import matplotlib.pyplot as plt
 import turtle
 import math
+
+# Get the directory of this script for relative imports
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_UTILS_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', '..', 'utils'))
+_INSTANCES_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', 'instances'))
+_OUTPUT_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, '..', 'output'))
+_NFP_DIR = os.path.abspath(os.path.join(_SCRIPT_DIR, 'NFPs'))
+sys.path.insert(0, _UTILS_DIR)
+
 from botao import Botao
-from nfp_teste import combinar_poligonos, triangulate_shapely,NoFitPolygon, interpolar_pontos_poligono
+from nfp_teste import combinar_poligonos, triangulate_shapely, NoFitPolygon, interpolar_pontos_poligono
+from RKO_v3 import RKO
+
 from shapely import intersection_all
 import shapely
 from shapely import Polygon, MultiPolygon, unary_union, LineString, MultiLineString, MultiPoint, LinearRing, GeometryCollection, Point
 from shapely.prepared import prep
 import itertools
 from scipy.spatial import ConvexHull
-import numpy as np
 import cv2
 import copy
 import pyautogui
-import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon as MPolygon, Rectangle
 import random
-import math
 from typing import List, Tuple, Union
-import sys
 from shapely import affinity
-import matplotlib.pyplot as plt
 from shapely.geometry import Polygon, MultiPolygon, Point, LineString
 from shapely.ops import unary_union
 from shapely.affinity import translate
 import cProfile
 import pstats
-sys.path.append(os.path.abspath("C:\\Users\\felip\\Documents\\GitHub\\RKO\\Python"))
 
-from RKO_v3 import RKO
-
-import matplotlib.pyplot as plt
-from shapely.geometry import Polygon, MultiPolygon
-from shapely.ops import unary_union
 
 def calcular_area_continua_nao_utilizada(pecas_posicionadas, area_corte_vertices, plot=False, buffer_distance=50):
     """
