@@ -2808,50 +2808,56 @@ class SPP2D():
 #     env.plot()
 
 if __name__ == '__main__':
-    # instancias = ["shapes2","swim","jackobs2"]    
-    instancias = ["EB-1","EB-2","EB-3","EB-4","EB-5","EB-6","EB-7","EB-8","EB-9","EB-10", "EB-11","EB-12","EB-13","EB-14"] 
-    # instancias = [ "dighe1","dighe2","shapes2","swim","fu","jackobs1","trousers", "jackobs2","albano","shirts","dagli","mao","marques"] 
-    # instancias.reverse()
-    # for ins in instancias:
-    #     print(ins)
-    #     env = SPP2D(dataset=ins, tempo=100, decoder='D0', pairwise_IN=False)
-    # decoders = ['D0','D0_A','D2_A','D0_B','D1_A','D1_B',  'D2_B']
-    decoders = ['D1_A']
-    # for ins in instancias:
-    # env = SPP2D(dataset=instancias[0], tempo=10, decoder='D0')
-    # env = SPP2D(dataset=instancias[0], tempo=0, decoder='D1_A', pairwise_IN=True)
-    # while True:
-    #     # regra = int(input("Regra: "))
-    #     env.pack(0,0,19)
+    # ==========================================================================
+    # MRCAP-MCA Test Configuration
+    # ==========================================================================
+    
+    # --- Dataset Selection ---
+    # Available: fu, jackobs1, jackobs2, shapes0, shapes1, shapes2, dighe1, 
+    #            dighe2, albano, dagli, mao, marques, shirts, swim, trousers
+    #            EB-1 to EB-14 (Embraer instances)
+    INSTANCES = ["fu", "jackobs1", "jackobs2"]
+    # INSTANCES = ["EB-1", "EB-2", "EB-3", "EB-4", "EB-5", "EB-6", "EB-7"]
+    
+    # --- Decoder Selection ---
+    # D0: basic (order + rotation)
+    # D1_A: with placement rules
+    # D2: with shrink factor
+    DECODER = "D1_A"
+    
+    # --- Solver Parameters ---
+    TIME_LIMIT = 60        # seconds per instance
+    RESTART_RATIO = 1.0    # restart frequency (0.5 = restart at half time)
+    NUM_RUNS = 1           # number of runs per instance
+    USE_PAIRWISE = False   # enable pairwise clustering
+    
+    # --- Output ---
+    SAVE_DIR = os.path.join(_OUTPUT_DIR, "results_MCA")
+    os.makedirs(SAVE_DIR, exist_ok=True)
+    
+    # ==========================================================================
+    # Run Tests
+    # ==========================================================================
+    for instance in INSTANCES:
+        print(f"\n{'='*60}")
+        print(f"Solving: {instance} | Decoder: {DECODER} | Time: {TIME_LIMIT}s")
+        print(f"{'='*60}")
         
-    for fd in range(1):
-        for tempo in [1200]:    
-            for restart in [1/2]:                
-                for ins in instancias:
-                    for decoder in decoders:
-                        list_time = []
-                        list_cost = []
-                        
-                        env = SPP2D(dataset=ins, tempo=tempo * restart, decoder=decoder, pairwise_IN=False)
-                        # profiler = cProfile.Profile()
-                        # profiler.enable()
-                        # i = 0
-                        # start = time.time()
-                        # while time.time() - start < 30:
-                        #     keys = np.random.random(env.tam_solution)
-                        #     sol = env.decoder(keys)
-                        #     print(env.cost(sol, save=False))
-                            
-                        #     i += 1
-                            
-                        # stats = pstats.Stats(profiler).sort_stats('cumulative')
-                        # stats.print_stats(20) # Imprime as 20 funções mais lentas
-                        # print(i)
-
-                        # print(len(env.lista), sum(Polygon(pol).area for pol in env.lista)/env.area)
-                        solver = RKO(env, print_best=True, save_directory=f'c:\\Users\\felip\\Documents\\GitHub\\RKO\\Python\\testes_SPP_LRP\\{decoder}_SPP{tempo}_{restart}\\testes_RKO.csv')
-                        
-
-                        cost,sol, temp = solver.solve(tempo,brkga=1,ms=1,sa=1,vns=1,ils=1, lns=1, pso=1, ga=1, restart= restart,  runs=1)
-          
-
+        env = SPP2D(
+            dataset=instance,
+            tempo=TIME_LIMIT * RESTART_RATIO,
+            decoder=DECODER,
+            pairwise_IN=USE_PAIRWISE
+        )
+        
+        save_file = os.path.join(SAVE_DIR, f"{instance}_{DECODER}.csv")
+        solver = RKO(env, print_best=True, save_directory=save_file)
+        
+        cost, sol, temp = solver.solve(
+            TIME_LIMIT,
+            brkga=1, ms=1, sa=1, vns=1, ils=1, lns=1, pso=1, ga=1,
+            restart=RESTART_RATIO,
+            runs=NUM_RUNS
+        )
+        
+        print(f"Best cost: {cost}")
