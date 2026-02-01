@@ -982,7 +982,7 @@ class Knapsack2D():
             pairwise_mode = pairwise_IN and (porcentagem > 0)
             
             if pairwise_mode:
-                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}_novo2.txt")
+                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}.txt")
                 
                 if os.path.exists(nfp_file):
                     with open(nfp_file, "r") as f:
@@ -1007,7 +1007,7 @@ class Knapsack2D():
                     with open(nfp_file, "w") as f:
                         f.write(repr(self.tabela_nfps))
             else:
-                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}_novo2.txt")
+                nfp_file = os.path.join(_NFP_DIR, f"nfp_{self.dataset}.txt")
                 
                 if os.path.exists(nfp_file):
                     with open(nfp_file, "r") as f:
