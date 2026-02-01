@@ -1042,22 +1042,22 @@ class SPP2D():
                     "shirts": -88.96,
                     "swim": -75.94,
                     "trousers": -91.00,
-                    "EB-1": -805.00,
-                    "EB-2": -800.00,
-                    "EB-3": -800.00,
-                    "EB-4": -800.00,
-                    "EB-5": -800.00,
-                    "EB-6": -800.00,
-                    "EB-7": -800.00,
-                    "EB-8": -800.00,
-                    "EB-9": -800.00,
-                    "EB-10": -800.00,
-                    "EB-11": -800.00,
-                    "EB-12": -800.00,
-                    "EB-13": -800.00,
-                    "EB-14": -800.00,
-                    "EB-15": -800.00,
-                    "EB-16": -800.00,
+                    "ED-1": -805.00,
+                    "ED-2": -800.00,
+                    "ED-3": -800.00,
+                    "ED-4": -800.00,
+                    "ED-5": -800.00,
+                    "ED-6": -800.00,
+                    "ED-7": -800.00,
+                    "ED-8": -800.00,
+                    "ED-9": -800.00,
+                    "ED-10": -800.00,
+                    "ED-11": -800.00,
+                    "ED-12": -800.00,
+                    "ED-13": -800.00,
+                    "ED-14": -800.00,
+                    "ED-15": -800.00,
+                    "ED-16": -800.00,
                     
                 }
         
@@ -2769,11 +2769,9 @@ if __name__ == '__main__':
     # ==========================================================================
     
     # --- Dataset Selection ---
-    # Available: fu, jackobs1, jackobs2, shapes0, shapes1, shapes2, dighe1, 
-    #            dighe2, albano, dagli, mao, marques, shirts, swim, trousers
-    #            EB-1 to EB-14 (Embraer instances)
-    INSTANCES = ["fu", "jackobs1", "jackobs2"]
-    # INSTANCES = ["EB-1", "EB-2", "EB-3", "EB-4", "EB-5", "EB-6", "EB-7"]
+    # ED-1 to ED-14 (Embraer instances)
+    INSTANCES = ["ED-1", "ED-2", "ED-3", "ED-4", "ED-5", "ED-6", "ED-7",
+                 "ED-8", "ED-9", "ED-10", "ED-11", "ED-12", "ED-13", "ED-14"]
     
     # --- Decoder Selection ---
     # D0: basic (order + rotation)

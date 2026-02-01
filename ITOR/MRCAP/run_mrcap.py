@@ -6,7 +6,7 @@ Usage:
     python run_mrcap.py [instance_name]
 
 Example:
-    python run_mrcap.py EB-1
+    python run_mrcap.py ED-1
 """
 
 import sys
@@ -19,7 +19,7 @@ from SPP_Embreaer_Metric import SPP2D, dimensions, ler_poligonos, calcular_area_
 
 def main():
     # Default instance
-    instance = "EB-1"
+    instance = "ED-1"
     
     if len(sys.argv) > 1:
         instance = sys.argv[1]
@@ -31,7 +31,7 @@ def main():
     
     if base is None:
         print(f"Error: Instance '{instance}' not found in dimensions table.")
-        print("Available instances: EB-1 to EB-14")
+        print("Available instances: ED-1 to ED-14")
         return
     
     print(f"Dimensions: {base} x {altura}, Scale: {escala}, Rotations: {graus}")
