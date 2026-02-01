@@ -389,11 +389,11 @@ def dimensions(dataset: str, mode: str = 'hard_kp'):
         'mao':       (2058.6,   1659.82,  [0, 1, 2, 3]),
         'marques':   (83.6,     78.23,    [0, 1, 2, 3]),
         'swim':      (6568.0,   3521.79,  [0, 2]),
-        'set0':      (1178.33   , 1571.11   , [0, 1, 2, 3]),  # 3:4
-        'set1':      (1461.78   , 1949.04   , [0, 1, 2, 3]),  # 3:4
-        'set2':      (2280.85   , 1282.98   , [0, 1, 2, 3]),  # 16:9
-        'series0':   (3078.33   , 1923.95   , [0, 1, 2, 3]),  # 8:5
-        'series1':   (5826.81   , 3641.76   , [0, 1, 2, 3]),  # 8:5
+        'ED-C1':     (1178.33, 1571.11, [0, 1, 2, 3]),  # ex-set0, 3:4
+        'ED-C2':     (1461.78, 1949.04, [0, 1, 2, 3]),  # ex-set1, 3:4
+        'ED-C3':     (2280.85, 1282.98, [0, 1, 2, 3]),  # ex-set2, 16:9
+        'ED-C4':     (3078.33, 1923.95, [0, 1, 2, 3]),  # ex-series0, 8:5
+        'ED-C5':     (5826.81, 3641.76, [0, 1, 2, 3]),  # ex-series1, 8:5
     }
 
     if dataset not in specs_data:
@@ -2360,53 +2360,54 @@ class Knapsack2D():
 #     env.plot()
 
 if __name__ == '__main__':
-    # instancias = ["shapes2","swim","jackobs2"]    
-    # instancias = ["fu","jackobs1","jackobs2","shapes0","shapes1","shapes2","albano","shirts","trousers","dighe1","dighe2","dagli","mao","marques","swim"]    
-    # instancias = [ "dighe1","dighe2","shapes2","swim","fu","jackobs1","trousers", "jackobs2","albano","shirts","dagli","mao","marques"] 
-    instancias = ["fu","jackobs1","jackobs2","shapes0","shapes1","shapes2","albano","shirts","trousers","dighe1","dighe2","dagli","mao","marques","swim", 'set0','set1','set2', 'series0', 'series1']
-    # for ins in instancias:
-    #     env = SPP2D(dataset=ins, tempo=100, decoder='D0', pairwise_IN=True)
-    # decoders = ['D0','D0_A','D2_A','D0_B','D1_A','D1_B',  'D2_B']
-    # for ins in instancias:
-    #     env = Knapsack2D(dataset=ins, tempo=10, decoder='D0')
-    # env = Knapsack2D(dataset=instancias[0], tempo=0, decoder='D0', pairwise_IN=True)
-    # while True:
-    #     regra = int(input("Regra: "))
-    #     env.pack(0,0,regra)
-    decoders = ['D0']
-
-    for fd in range(10):
-    # for to in [400]:    
-        for restart in [1/2]:                
-            for ins in instancias:
-                for decoder in decoders:
-                    list_time = []
-                    list_cost = []
-                    if ins == "fu" or ins == "jackobs1" or ins == "jackobs2" or ins == "dighe1" or ins == "dighe2" :
-                        tempo = 600
-                    else:
-                        tempo = 1200
-                    env = Knapsack2D(dataset=ins, tempo=tempo * restart, decoder=decoder, pairwise_IN=True)
-                    # profiler = cProfile.Profile()
-                    # profiler.enable()
-                    # i = 0
-                    # start = time.time()
-                    # while time.time() - start < 30:
-                    #     keys = np.random.random(env.tam_solution)
-                    #     sol = env.decoder(keys)
-                    #     print(env.cost(sol, save=False))
-                        
-                    #     i += 1
-                        
-                    # stats = pstats.Stats(profiler).sort_stats('cumulative')
-                    # stats.print_stats(20) # Imprime as 20 funções mais lentas
-                    # print(i)
-
-                    # print(len(env.lista), sum(Polygon(pol).area for pol in env.lista)/env.area)
-                    solver = RKO(env, print_best=False, save_directory=f'c:\\Users\\felip\\Documents\\GitHub\\RKO\\Python\\testes_KP_novo\\{decoder}_KP_{tempo}_{restart}\\testes_RKO.csv')
-                    
-
-                    cost,sol, temp = solver.solve(tempo,brkga=1,ms=1,sa=1,vns=1,ils=1, lns=1, pso=1, ga=1, restart= restart,  runs=1)
+    # ==========================================================================
+    # Knapsack 2D Test Configuration
+    # ==========================================================================
+    
+    # --- Dataset Selection ---
+    # Classic instances: fu, jackobs1, jackobs2, shapes0-2, dighe1-2, 
+    #                    albano, dagli, mao, marques, shirts, swim, trousers
+    # ED-C instances: ED-C1 to ED-C5
+    INSTANCES = ["fu", "jackobs1", "jackobs2"]
+    # INSTANCES = ["ED-C1", "ED-C2", "ED-C3", "ED-C4", "ED-C5"]
+    
+    # --- Decoder Selection ---
+    DECODER = "D0"
+    
+    # --- Solver Parameters ---
+    TIME_LIMIT = 60        # seconds per instance
+    RESTART_RATIO = 0.5    # restart frequency
+    NUM_RUNS = 1           # number of runs
+    USE_PAIRWISE = True    # enable pairwise clustering
+    
+    # --- Output ---
+    SAVE_DIR = os.path.join(_OUTPUT_DIR, "results_KP")
+    os.makedirs(SAVE_DIR, exist_ok=True)
+    
+    # ==========================================================================
+    # Run Tests
+    # ==========================================================================
+    for instance in INSTANCES:
+        print(f"\n{'='*60}")
+        print(f"Solving: {instance} | Decoder: {DECODER} | Time: {TIME_LIMIT}s")
+        print(f"{'='*60}")
         
-                    env.cost(env.decoder(sol), save=True)
-
+        env = Knapsack2D(
+            dataset=instance,
+            tempo=TIME_LIMIT * RESTART_RATIO,
+            decoder=DECODER,
+            pairwise_IN=USE_PAIRWISE
+        )
+        
+        save_file = os.path.join(SAVE_DIR, f"{instance}_{DECODER}.csv")
+        solver = RKO(env, print_best=True, save_directory=save_file)
+        
+        cost, sol, temp = solver.solve(
+            TIME_LIMIT,
+            brkga=1, ms=1, sa=1, vns=1, ils=1, lns=1, pso=1, ga=1,
+            restart=RESTART_RATIO,
+            runs=NUM_RUNS
+        )
+        
+        env.cost(env.decoder(sol), save=True)
+        print(f"Best cost: {cost}")
