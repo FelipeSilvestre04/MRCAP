@@ -1,5 +1,6 @@
 # Tests folder - local only
 Tests/
+auto_tests/
 
 # Python
 __pycache__/
